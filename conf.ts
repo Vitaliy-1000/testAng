@@ -3,6 +3,7 @@ import{Config, browser} from "protractor";
 //const { Config} = require('protractor') 
 
 const config : Config = {
+    framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['todo-spec.ts'],
 
