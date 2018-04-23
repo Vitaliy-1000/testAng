@@ -10,12 +10,12 @@ const config : Config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     onPrepare() {
-      browser.waitForAngularEnabled(false);
+      browser.waitForAngularEnabled(true);
     },
 
     jasmineNodeOpts: {
       showColors: true,
-      defaultTimeoutInterval: 30000
+     defaultTimeoutInterval: 300000
     }
 
 
