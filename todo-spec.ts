@@ -1,26 +1,31 @@
 import { element, by, browser } from "protractor";
-//import { expect } from 'jasmine'
 
-const userded = {
-  username: 'ded',
-  password: 'ded'
-};
+import { LoginForm } from './object/login';
+import { HomePage } from './object/homePage';
+
+const loginForm = new LoginForm();
+const homePage = new HomePage();
+
+const user = {
+  useremail: '',
+  password: ''
+}
 
 
 
 describe('angularjs homepage todo list', function() {
 
-   var originalTimeout; 
-
-    // beforeEach(function() { originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL; 
-    //     jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000; }); 
-
-    // afterEach(function() { jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout; }); 
-  
- 
-  
     it('page', async function() {
-      await browser.get('https://maxtvcommunications.com/'); // тут злетіло
+      await browser.get('https://maxtvcommunications.com/'); 
+
+      expect(await loginForm.url()).toEqual(loginForm.loginUrl);
+
+      await loginForm.loginGo(user);
+
+      expect(await loginForm.url()).toEqual(homePage.homeUrl);
+
+      expect(await homePage.sideMenu.isPresent()).toEqual(true);
+
       
   });
 });
