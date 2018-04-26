@@ -3,17 +3,15 @@ import { element, by, browser } from "protractor";
 import { LoginForm } from './object/login';
 import { HomePage } from './object/homePage';
 import { DirectoryResident } from './object/directoryResident';
+import { CreateResident } from './object/createResident'
+import { user } from './testData';
 
 const loginForm = new LoginForm();
 const homePage = new HomePage();
 const directoryResident = new DirectoryResident();
+const createResident = new CreateResident();
 
-const user = {
-  useremail: '',
-  password: ''
-}
-
-
+const oldUser = user;
 
 describe('angularjs homepage', function() {
 
@@ -22,7 +20,7 @@ describe('angularjs homepage', function() {
 
       expect(await loginForm.url()).toEqual(loginForm.loginUrl);
 
-      await loginForm.loginGo(user);
+      await loginForm.loginGo(newUser);
 
       expect(await loginForm.url()).toEqual(homePage.homeUrl);
 
@@ -33,5 +31,11 @@ describe('angularjs homepage', function() {
       await directoryResident.clickElement(directoryResident.menu, 5); // click on Directiry
 
       expect(await directoryResident.addResident.isPresent()).toEqual(true);
-  });
+
+      await directoryResident.addResident.click();
+
+      expect(await createResident.arePresent()).toEqual(true);
+    
+      
+    });
 });

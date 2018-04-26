@@ -2,6 +2,8 @@ import {browser, $, $$ } from "protractor";
 import { ElementFinder, ElementArrayFinder } from "protractor/built/element";
 
 export class CreateResident {
+    modalBody: ElementFinder;
+
     building: ElementFinder;
     unit: ElementFinder;
     occupantType: ElementFinder;
@@ -29,6 +31,8 @@ export class CreateResident {
     save: ElementFinder;
 
     constructor() {
+       // this.modalBody = $('.modal-body');
+
         this.building = $('[name = building]');
         this.unit = $('.ss_view-part');
         this.occupantType = $('[name = role]');
@@ -57,6 +61,11 @@ export class CreateResident {
     }
 
     async arePresent(){
-        
+        let key = ''
+        for (key in this) {
+            if (this[key].isPresent()) {
+                return true
+            }
+        }
     }
 }
