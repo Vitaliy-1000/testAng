@@ -15,9 +15,9 @@ const user = {
 
 
 
-describe('angularjs homepage todo list', function() {
+describe('angularjs homepage', function() {
 
-    it('page', async function() {
+    it('addResident', async function() {
       await browser.get('https://maxtvcommunications.com/'); 
 
       expect(await loginForm.url()).toEqual(loginForm.loginUrl);
@@ -28,9 +28,9 @@ describe('angularjs homepage todo list', function() {
 
       expect(await homePage.sideMenu.isPresent()).toEqual(true);
 
-      await directoryResident.clickElement(directoryResident.recordKeeping, 1);
+      await directoryResident.clickElement(directoryResident.menu, 4); // click on Record Keeping
 
-      await directoryResident.clickElement(directoryResident.directory, 5);
+      await directoryResident.clickElement(directoryResident.menu, 5); // click on Directiry
 
       expect(await directoryResident.addResident.isPresent()).toEqual(true);
   });

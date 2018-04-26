@@ -3,14 +3,13 @@ import { ElementFinder, ElementArrayFinder } from "protractor/built/element";
 
 export class DirectoryResident {
 
-    recordKeeping: ElementArrayFinder;
-    directory: ElementFinder;
+    menu: ElementArrayFinder;
     addResident: ElementFinder;
 
+    
 
     constructor() {
-        this.recordKeeping = $$('li>a.ng-star-inserted') // get(1)
-        this.directory = $('li>a') // get(5)
+        this.menu = $$('li>a')
         this.addResident = $('.btn.btn-w-m.btn-primary.pull-right'); 
     }
 
